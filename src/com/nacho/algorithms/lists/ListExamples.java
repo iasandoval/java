@@ -10,10 +10,32 @@ public class ListExamples {
 
     public static void main(String[] args) {
 
-	testSingleLinkedList();
+	//testSingleLinkedList();
 	
-	testCircularSingleLinkedList();
+	//testCircularSingleLinkedList();
 	
+	testDoubleLinkedList();
+	
+    }
+    
+    /**
+     * Private method to test DoubleLinkedList
+     */
+    private static void testDoubleLinkedList() {
+	DoubleLinkedList<String> circular = new DoubleLinkedList<>();
+	circular.view();
+
+	circular.addFirst("A");
+	circular.view();
+
+	circular.addFirst("B");
+	circular.view();
+
+	circular.addFirst("C");
+	circular.view();
+
+	circular.addLast("D");
+	circular.view();
     }
 
     /**
