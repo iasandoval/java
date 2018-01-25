@@ -6,6 +6,7 @@ package com.nacho.algorithms.lists;
  * @author iasandoval
  * 
  * @param <E> Element type.
+ * 
  */
 public class SingleLinkedList<E> extends MyLinkedList<E> {
 
