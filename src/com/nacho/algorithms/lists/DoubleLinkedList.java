@@ -1,5 +1,12 @@
 package com.nacho.algorithms.lists;
 
+/**
+ * Representation of the Double Linked List.
+ *
+ * @author iasandoval
+ * 
+ * @param <E> Element type.
+ */
 public class DoubleLinkedList<E> extends MyLinkedList<E> {
 
     // Header of the list

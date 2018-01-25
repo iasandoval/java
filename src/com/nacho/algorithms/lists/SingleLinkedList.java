@@ -129,13 +129,11 @@ public class SingleLinkedList<E> extends MyLinkedList<E> {
 
 	    value.append(currentNode.getElement());
 
-	    int i = 0;
-	    while (null != currentNode.getNext() && i < this.getSize()) {
+	    while (null != currentNode.getNext()) {
 		value.append("->");
 		currentNode = currentNode.getNext();
 
 		value.append(currentNode.getElement());
-		i++;
 	    }
 
 	}

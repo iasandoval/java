@@ -3,6 +3,8 @@ package com.nacho.algorithms.lists;
 /**
  * Node class
  * 
+ * @author iasandoval
+ * 
  * @param <E> Element stored in this node.
  */
 public class Node<E> {
