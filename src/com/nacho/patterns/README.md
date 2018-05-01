@@ -60,6 +60,59 @@ and put together.
 
 ### Singleton
 
+**Lazy Singleton**
+
+```Java
+public class LazySingleton {
+    
+    // 1. An static atribute for the instance.
+    private static LazySingleton instance;
+    
+    // 2. Constructor Must be private
+    private LazySingleton() {
+        // Init code goes here
+    }
+    
+    // 3. getInstance method to create the singleton
+    public static LazySingleton getInstance() {
+        if (instance == null) {
+            instance = new LazySingleton();
+        }
+        return instance;
+    }
+}
+```
+
+**Thread Safe Singleton**
+
+```Java
+public class ThreadSafeSingleton {
+    
+    // 1. An static atribute for the instance.
+    private static ThreadSafeSingleton instance;
+    
+    // 2. Constructor Must be private
+    private ThreadSafeSingleton() {
+        // Init code goes here
+    }
+    
+    // 3. getInstance method to create the singleton
+    // Get the instance of the class with double checked locking
+    public static ThreadSafeSingleton getInstance() {
+        if (instance == null) {
+            synchronized (ThreadSafeSingleton.class) {
+                if (instance == null) {
+                    instance = new ThreadSafeSingleton();
+                }
+            }
+        }
+        return instance;
+    }
+}
+```
+
+View Examples Java files [here](./creational/singleton/).
+
 ## Structural Design Patterns
 
 The structural patterns provide guidelines to compose 
