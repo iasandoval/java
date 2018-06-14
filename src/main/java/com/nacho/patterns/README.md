@@ -1,11 +1,11 @@
 # Patterns
 
 * [Creational Design Patterns](#creational-design-patterns)
-    * Factory Method
+    * [Factory Method](#factory-method-virtual-constructor)
     * Abstract Factory
     * Builder
     * Prototype
-    * Singleton
+    * [Singleton](#singleton)
 * [Structural Design Patterns](#structural-design-patterns)
     * Adapter Class
     * Adapter (Object)
@@ -51,6 +51,53 @@ system use.
 and put together.
 
 ### Factory Method (Virtual Constructor)
+
+To Create a Factory:
+1. Create an Interface.
+2. Implement Factory class.
+3. Create a Factory Implementation to return an Object based on the parameters 
+or conditions.
+
+**Factory Interface**
+```Java
+public interface Factory {
+    String getProduct();
+}
+```
+
+**Factory Objects**
+```Java
+public class Bicycle implements Factory {
+    public String getProduct() {return "Go go pedal!";}
+}
+
+public class Car implements Factory {
+    public String getProduct() {return "I'm a Car.";}
+}
+
+public class Train implements Factory {
+    public String getProduct() {return "I'm a Train Motherfucker!";}
+}
+```
+
+**Factory implementation**
+```java
+public class TransportFactory {
+
+    public static Factory getTransport(String type) {
+        if ("car".equalsIgnoreCase(type)) {
+            return new Car();
+        } else if ("bicycle".equalsIgnoreCase(type)) {
+            return new Bicycle();
+        } else if ("train".equalsIgnoreCase(type)) {
+            return new Train();
+        } else {
+            return null;
+        }
+    }
+
+}
+```
 
 ### Abstract Factory (Kit)
 
