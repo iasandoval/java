@@ -1,87 +1,92 @@
 package com.nacho.algorithms.lists;
 
+import org.junit.Test;
+
 /**
  * Main class to test Linked List
- * 
- * @author iasandoval
  *
+ * @author iasandoval
  */
 public class ListExamples {
 
-    public static void main(String[] args) {
+    @Test
+    public void testAll() {
 
-	testSingleLinkedList();
-	
-	testCircularSingleLinkedList();
-	
-	testDoubleLinkedList();
-	
-    }
-    
-    /**
-     * Private method to test DoubleLinkedList
-     */
-    private static void testDoubleLinkedList() {
-	DoubleLinkedList<String> circular = new DoubleLinkedList<>();
-	circular.view();
+        testSingleLinkedList();
 
-	circular.addFirst("A");
-	circular.view();
+        testCircularSingleLinkedList();
 
-	circular.addFirst("B");
-	circular.view();
+        testDoubleLinkedList();
 
-	circular.addFirst("C");
-	circular.view();
-
-	circular.addLast("D");
-	circular.view();
     }
 
     /**
-     * Private method to test CircularSingleLinkedList
+     * Method to test DoubleLinkedList
      */
-    private static void testCircularSingleLinkedList() {
-	CircularSingleLinkedList<String> circular = new CircularSingleLinkedList<>();
-	circular.view();
+    @Test
+    public void testDoubleLinkedList() {
+        DoubleLinkedList<String> circular = new DoubleLinkedList<>();
+        circular.view();
 
-	circular.addFirst("A");
-	circular.view();
+        circular.addFirst("A");
+        circular.view();
 
-	circular.addFirst("B");
-	circular.view();
+        circular.addFirst("B");
+        circular.view();
 
-	circular.addFirst("C");
-	circular.view();
+        circular.addFirst("C");
+        circular.view();
 
-	circular.addLast("D");
-	circular.view();
-
-	circular.rotate();
-	circular.view();
-
-	circular.rotate();
-	circular.view();
+        circular.addLast("D");
+        circular.view();
     }
 
     /**
-     * Private method to test SingleLinkedList
+     * Method to test CircularSingleLinkedList
      */
-    private static void testSingleLinkedList() {
-	SingleLinkedList<String> simple = new SingleLinkedList<>();
-	simple.view();
+    @Test
+    public void testCircularSingleLinkedList() {
+        CircularSingleLinkedList<String> circular = new CircularSingleLinkedList<>();
+        circular.view();
 
-	simple.addFirst("A");
-	simple.view();
+        circular.addFirst("A");
+        circular.view();
 
-	simple.addFirst("B");
-	simple.view();
+        circular.addFirst("B");
+        circular.view();
 
-	simple.addFirst("C");
-	simple.view();
+        circular.addFirst("C");
+        circular.view();
 
-	simple.addLast("D");
-	simple.view();
+        circular.addLast("D");
+        circular.view();
+
+        circular.rotate();
+        circular.view();
+
+        circular.rotate();
+        circular.view();
+    }
+
+    /**
+     * Method to test SingleLinkedList
+     */
+    @Test
+    public void testSingleLinkedList() {
+        SingleLinkedList<String> simple = new SingleLinkedList<>();
+        simple.view();
+
+        simple.addFirst("A");
+        simple.view();
+
+        simple.addFirst("B");
+        simple.view();
+
+        simple.addFirst("C");
+        simple.view();
+
+        simple.addLast("D");
+        simple.view();
     }
 
 }
