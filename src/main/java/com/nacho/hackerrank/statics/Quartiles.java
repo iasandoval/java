@@ -1,0 +1,108 @@
+package com.nacho.hackerrank.statics;
+
+import com.nacho.hackerrank.statics.util.StaticsUtil;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Quartiles {
+
+    private int q1;
+    private int q2;
+    private int q3;
+
+    @Test
+    public void test() {
+        Quartiles quartiles = new Quartiles();
+        quartiles.calculate("3 7 8 5 12 14 21 13 18");
+
+        System.out.println(quartiles.getQ1());
+        System.out.println(quartiles.getQ2());
+        System.out.println(quartiles.getQ3());
+
+        Assert.assertTrue(6 == quartiles.getQ1());
+        Assert.assertTrue(12 == quartiles.getQ2());
+        Assert.assertTrue(16 == quartiles.getQ3());
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int i = scan.nextInt();
+        scan.nextLine();
+        String X = scan.nextLine();
+        scan.close();
+
+        Quartiles quartiles = new Quartiles();
+        quartiles.calculate(X);
+
+        System.out.println(quartiles.getQ1());
+        System.out.println(quartiles.getQ2());
+        System.out.println(quartiles.getQ3());
+    }
+
+    /**
+     * Task
+     * Given an array, X, of n integers, calculate the respective first quartile (Q1), second quartile (Q2),
+     * and third quartile (Q3). It is guaranteed that Q1, Q2, and Q3 are integers.
+     *
+     * Input Format
+     * The first line contains an integer, n, denoting the number of elements in the array.
+     * The second line contains n space-separated integers describing the array's elements.
+     *
+     * Method
+     * Use the median to divide the ordered data set into two halves.
+     * If there are an odd number of data points in the original ordered data set,
+     * do not include the median (the central value in the ordered list) in either half.
+     * If there are an even number of data points in the original ordered data set,
+     * split this data set exactly in half.
+     * The lower quartile value is the median of the lower half of the data.
+     * The upper quartile value is the median of the upper half of the data.
+     */
+    public void calculate(String X) {
+        int[] valuesX = StaticsUtil.parseIntArray(X);
+        Arrays.sort(valuesX);
+
+        int L[] = Arrays.copyOfRange(valuesX, 0, valuesX.length/2);
+        this.q1 = this.median(L);
+        this.q2 = this.median(valuesX);
+
+        if(valuesX.length%2 == 0) {
+            // Even
+            int U[] = Arrays.copyOfRange(valuesX, (valuesX.length/2), valuesX.length);
+            this.q3 = this.median(U);
+        } else {
+            // Odd
+            int U[] = Arrays.copyOfRange(valuesX, (valuesX.length/2)+1, valuesX.length);
+            this.q3 = this.median(U);
+        }
+
+    }
+
+    private int median(int[] args) {
+        int median;
+
+        if(args.length%2 == 0) {
+            // Even
+            median = (args[args.length/2] + args[args.length/2 - 1])/2;
+        } else {
+            // Odd
+            median = args[args.length/2];
+        }
+
+        return median;
+    }
+
+    public int getQ1() {
+        return q1;
+    }
+
+    public int getQ2() {
+        return q2;
+    }
+
+    public int getQ3() {
+        return q3;
+    }
+}
