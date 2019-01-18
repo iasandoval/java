@@ -8,31 +8,19 @@ import java.util.Scanner;
 
 public class WeightedMean {
 
-    private double mean;
-
     @Test
     public void test() {
 
-        WeightedMean weightedMean = new WeightedMean();
-        weightedMean.calculate("10 40 30 50 20", "1 2 3 4 5");
-
-        System.out.println(weightedMean.getMean());
-
-        Assert.assertTrue(32f == weightedMean.getMean());
-    }
-
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int i = scan.nextInt();
-        scan.nextLine();
-        String X = scan.nextLine();
-        String W = scan.nextLine();
-        scan.close();
+        double[] X = StaticsUtil.parseDoubleArray("10 40 30 50 20");
+        double[] W = StaticsUtil.parseDoubleArray("1 2 3 4 5");
 
         WeightedMean weightedMean = new WeightedMean();
-        weightedMean.calculate(X, W);
 
-        System.out.println(weightedMean.getMean());
+        double mean = StaticsUtil.round(weightedMean.calculate(X, W));
+
+        System.out.println(mean);
+
+        Assert.assertTrue(32 == mean);
     }
 
     /**
@@ -40,33 +28,38 @@ public class WeightedMean {
      * Given an array, X, of N integers and an array, W, representing the respective weights of X's elements,
      * calculate and print the weighted mean of X's elements.
      * Your answer should be rounded to a scale of  decimal place (i.e., 12.3 format).
-     *
+     * <p>
      * Input Format
      * The first line contains an integer, N, denoting the number of elements in arrays X and W.
      * The second line contains N space-separated integers describing the respective elements of array X.
      * The third line contains N space-separated integers describing the respective elements of array W.
      */
-    public void calculate (String X, String W) {
-        double[] valuesX = StaticsUtil.parseDoubleArray(X);
-        double[] valuesW = StaticsUtil.parseDoubleArray(W);
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int i = scan.nextInt();
+        scan.nextLine();
+        String Xs = scan.nextLine();
+        String Ws = scan.nextLine();
+        scan.close();
 
-        this.mean = this.weightedMean(valuesX, valuesW);
+        double[] X = StaticsUtil.parseDoubleArray(Xs);
+        double[] W = StaticsUtil.parseDoubleArray(Ws);
 
+        WeightedMean weightedMean = new WeightedMean();
+
+        System.out.println(StaticsUtil.round(weightedMean.calculate(X, W)));
     }
 
-    private double weightedMean(double[] X, double[] W) {
+    public double calculate(double[] X, double[] W) {
         double sup = 0;
         double inf = 0;
 
-        for(int i = 0; i<X.length; i++) {
-            sup += (X[i]*W[i]);
+        for (int i = 0; i < X.length; i++) {
+            sup += (X[i] * W[i]);
             inf += W[i];
         }
 
-        return StaticsUtil.roundDF(sup/inf);
+        return sup / inf;
     }
 
-    public double getMean() {
-        return mean;
-    }
 }
