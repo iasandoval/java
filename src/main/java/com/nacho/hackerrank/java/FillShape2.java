@@ -49,7 +49,7 @@ public class FillShape2 {
 
         if (num % 2 == 0) {
             // Even
-            middle = (num / 2 + num / 2 - 1) / 2;
+            middle = num / 2 - 1;
         } else {
             // Odd
             middle = num / 2;
