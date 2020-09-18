@@ -1,4 +1,4 @@
-package com.nacho.hackerrank.java;
+package com.nacho.hackerrank.fillshape;
 
 import java.util.ArrayList;
 import java.util.List;

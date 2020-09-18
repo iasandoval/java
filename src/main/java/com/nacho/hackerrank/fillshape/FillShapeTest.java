@@ -1,6 +1,5 @@
-package com.nacho.hackerrank.java.test;
+package com.nacho.hackerrank.fillshape;
 
-import com.nacho.hackerrank.java.FillShape2;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -22,7 +22,7 @@ public class StringVsStringBuilder {
 
         String result = "";
         for (int i = 0; i < n; i++) {
-            result += c;
+            result.concat(""+c);
         }
 
         long endTime = System.currentTimeMillis();
